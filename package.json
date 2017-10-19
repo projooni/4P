@@ -1,0 +1,19 @@
+{
+  "name": "ui-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git:git@github.com/projooni/ui-store.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/projooni/ui-store/issues"
+  },
+  "homepage": "https://github.com/projooni/ui-store#readme"
+}
