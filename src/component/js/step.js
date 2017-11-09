@@ -1,92 +1,269 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Long Paragraph</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, max-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" href="../css/long-paragraph.css">
-</head>
-<body>
+/**
+ * Created by SDS on 2017-10-16.
+ */
+var mobile = window.matchMedia("screen and (max-width: 768px)");
+var $backBtn = $('button.step-controller__back');
+var $nextBtn = $('button.step-controller__next');
+var $preBtn = $('button.step-controller__pre');
+var minSeq = 1; // Back 할 수 있는 최대 스텝 번호 (1 ~ N)
+var maxStep = $('.step-nav__step').length;
+var maxIdx = maxStep-1; // last index
+var completedIdx = 0;   // last completed index
 
-<div id="content-text">
+$(document).ready(function(){
 
-    <!--<section id="title">-->
+    $preBtn.addClass('step-controller__button--hidden');
 
-    <!--<p>Content Text (Title)</p>-->
+    $(window).on('resize', function(e){
 
-    <!--</section>-->
-    <section id="content">
+        if(!mobile.matches){
+            $backBtn.css('width', '');
+            $nextBtn.css('width', '');
+        }else{
+            if(completedIdx == maxIdx){
+                // 마지막 단계일 때 'SAVE'버튼을 100%로
+                hideBackBtn();
+                $nextBtn.css('width', '100%');
+            }
+        }
 
-        <span class="mask-gradient"></span>
+    });
 
-        <div class="dropdown">
-            <button type="button"></button>
-            <ul>
-                <!--<li class="active" data-tab-num="tab1">Tab Title 1</li>-->
-                <!--<li data-tab-num="tab2">Tab Title 2</li>-->
-                <!--<li data-tab-num="tab3">Tab Title 3</li>-->
-                <!--<li data-tab-num="tab4">Tab Title 4</li>-->
-            </ul>
-        </div>
+    $('.step-wrap').each(function(index, item){
 
-        <!--<select id="drop-list">-->
-        <!--</select>-->
+        var $stepNavWrapper = $(item).find('.step-nav-wrapper');
+        var $title = $(item).find('.step-nav .step-nav__step__title');
+        var $circle = $(item).find(".step-nav__step__circle"); // 전체 스텝
 
-        <div id="paragraph-area">
+        // backStep 로직을 'back button'에 연결
+        $preBtn.on('click', {
+            $stepWrapper : $(item),
+            $circle : $circle
+        }, backStep);
+
+        // nextStep 로직을 'next button'에 연결
+        $nextBtn.on('click',{
+            $stepWrapper : $(item),
+            $circle : $circle
+        }, nextStep);
+
+        var maxHeight = 0;
+
+        $title.each(function(){
+            var height = $(this).height();
+            maxHeight = maxHeight < height ? height : maxHeight;
+        });
+
+        $stepNavWrapper.each(function(e){
+            $(this).css("margin-bottom", maxHeight+30);
+        });
+
+        changeCurrStepText(0);
+
+        $circle.on('click', function() {
+
+            // 클릭된 스텝 번호
+            var clickedCircle = $(this);
+            var currIdx = $('.step-nav__step__circle').index(clickedCircle);
+            var click_step_number = currIdx+1;
+
+            if (clickedCircle.hasClass("step-nav__step--completed") || clickedCircle.hasClass("step-nav__step--completing")) {
+                var $stepTitle = $('.step-nav__step__title span');
+                var $mobileTitle = $('.step-wrap__small-size-title');
+                var currStep = click_step_number;
+                var $currStep = $('#s-content__current-step');
+
+                $mobileTitle.text($stepTitle.eq(click_step_number - 1).text());
+                $currStep.text('Step0'+currStep);
+
+                // 현재까지 완료되거나 진행중인 step 중 마지막 요소의 completing 제거
+                var $completed = $('.step-nav__step__circle.step-nav__step--completed');
+                $completed.eq($completed.length-1).parent().nextAll('.step-nav__step').eq(0).find('.step-nav__step__circle').removeClass('step-nav__step--completing');
+
+                // 클릭된 step을 completing으로 변경
+                clickedCircle.removeClass("step-nav__step--completed");
+                clickedCircle.addClass("step-nav__step--completing");
+
+                if(currIdx < maxIdx){
+                    changeDoneToNext();
+                }
+
+                for(var index = 0; index < $circle.length; index++){
+                    if(index != currIdx){ // 현재 인덱스 제외하고 처리
+                        if(index <= completedIdx){ // completed step
+                            $circle.eq(index).removeClass('step-nav__step--completing');
+                            $circle.eq(index).addClass('step-nav__step--completed');
+                        }
+                    }
+                }
+
+                if(currIdx > 0){
+                    showPreBtn();
+                }else{
+                    hidePreBtn();
+                }
+
+                if(mobile.matches){
+                    showBackBtn();
+                    $nextBtn.css('width', '50%');
+                }
+
+            }
+
+        });
 
 
-            <article class="paragraph">
-                <p class="sub-title">The standard Lorem Ipsum passage, used since the 1500s<p>
-                <p class="sub-content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </article>
+    });
 
-            <article class="paragraph">
-                <p class="sub-title">Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</p>
-                <p class="sub-content">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
-            </article>
+})
 
-            <article class="paragraph">
-                <p class="sub-title">1914 translation by H. Rackham</p>
-                <p class="sub-content">"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure? But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure? But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</p>
-            </article>
+// backStep 로직
+function backStep(event){
 
-            <article class="paragraph">
-                <p class="sub-title">Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</p>
-                <p class="sub-content">"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
-            </article>
+    var completedCircleLen = completedIdx+1;   // 완료된 스텝 수
+    var currCircle = $('.step-nav__step__circle.step-nav__step--completing');
+    var currIdx = $('.step-nav__step__circle').index(currCircle);
 
-            <article class="paragraph">
-                <p class="sub-title">1914 translation by H. Rackham</p>
-                <p class="sub-content">"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains. On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains. On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."</p>
-            </article>
+    if(currIdx-1 > 0){
+        showPreBtn();
+    }else{
+        hidePreBtn();
+    }
 
-            <article class="paragraph">
-                <p class="sub-title">Lorem Ipsum: usage</p>
-                <p class="sub-content">diagonal layout based on Lorem IpsumLorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin, these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are digraphs not to be found in the original.
+    if( (currIdx+1) > minSeq){  // 완료된 혹은 진행중인 스텝이 2이상일 경우에만 작동
 
-                    In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely since the sixteenth century.
-                </p>
-            </article>
+        currCircle.removeClass('step-nav__step--completing');
 
-            <article class="paragraph">
-                <p class="sub-title">Lorem Ipsum: common examples</p>
-                <p class="sub-content">layout based on Lorem Ipsum Most of its text is made up from sections 1.10.32–3 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes). Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit is the first known version ("Neither is there anyone who loves grief itself since it is grief and thus wants to obtain it"). It was found by Richard McClintock, a philologist, director of publications at Hampden-Sydney College in Virginia; he searched for citings of consectetur in classical Latin literature, a term of remarkably low frequency in that literary corpus.
-                    Cicero famously orated against his political opponent Lucius Sergius Catilina. Occasionally the first Oration against Catiline is taken for type specimens: Quo usque tandem abutere, Catilina, patientia nostra? Quam diu etiam furor iste tuus nos eludet? (How long, O Catiline, will you abuse our patience? And for how long will that madness of yours mock us?)
-                    Cicero's version of Liber Primus (first Book), sections 1.10.32–3 (fragments included in most Lorem Ipsum variants in red):
-                </p>
-            </article>
+        if(currIdx <= completedIdx){
+            currCircle.addClass('step-nav__step--completed');
+        }
 
-        </div>
+        currCircle.parent().prevAll('.step-nav__step').eq(0).find('.step-nav__step__circle').removeClass('step-nav__step--completed');
+        currCircle.parent().prevAll('.step-nav__step').eq(0).find('.step-nav__step__circle').addClass('step-nav__step--completing');
+
+        if(completedCircleLen < 1){
+            disableBackBtn();
+        }
+
+        changeCurrStepText(completedCircleLen); // [responsive] mobile 해상도 title 내용 변경
+
+        // TODO 버튼 텍스트를 조작하는 부분으로 분리 필요
+        changeDoneToNext(maxStep, completedCircleLen);
+
+        if(mobile.matches){
+            showBackBtn();
+            $nextBtn.css('width', '50%');
+        }
+    }
+
+};
+
+function nextStep(event){
+    var completedCircleLen = completedIdx+1;   // 완료된 스텝 수
+    var currCircle = $('.step-nav__step__circle.step-nav__step--completing');
+    var currIdx = $('.step-nav__step__circle').index(currCircle);
+    
+    // 처음 완료되는 step이라면
+    if(currIdx > completedIdx){
+        completedIdx = currIdx;
+    }
+
+    if(currIdx+1 > 0){
+        showPreBtn();
+    }else{
+        hidePreBtn();
+    }
+
+    if( currIdx != -1 && currIdx <= maxIdx){ // 'DONE' 처리 하기전 처리 로직
+        currCircle.addClass('step-nav__step--completed');
+        currCircle.removeClass('step-nav__step--completing'); // 이전 스텝 completing 모드 해제
+        completedCircleLen = completedIdx+1;
+        currCircle.parent().nextAll('.step-nav__step').eq(0).find('.step-nav__step__circle').removeClass('step-nav__step--completed');
+        currCircle.parent().nextAll('.step-nav__step').eq(0).find('.step-nav__step__circle').addClass('step-nav__step--completing');  // 1.5초 후 다음 스텝을 현재 스텝으로 전환한다
+        activeBackBtn();    //TODO 분리 필요
+
+        if(currIdx == maxIdx){   // 현재스텝이 마지막 스텝일 경우 'NEXT'를 'DONE' 버튼으로 전환한다
+            activeNextBtn();    // TODO 분리 필요
+            hidePreBtn();
+            changeCurrStepText(completedCircleLen);
+            changeNextToDone();
+
+            if(mobile.matches){
+                hideBackBtn();
+                $nextBtn.css('width', '100%');
+            }
+
+        }else if(currIdx < maxIdx){  // 현재스텝이 마지막 스텝 이전일 경우엔 버튼만 활성화한다 ( 마지막 스텝 완료시엔 비활성화 유지 )
+            changeDoneToNext();
+            changeCurrStepText(completedCircleLen);
+            if(currIdx != maxIdx-1){
+                activeNextBtn();    // TODO 분리 필요
+            }
+
+        }
+
+    }
+
+};
+
+function changeCurrStepText(completedSteps){
+
+    var $stepTitle = $('.step-wrap .step-nav .step-nav__step .step-nav__step__title span');
+    var $mobileTitle = $('.step-wrap__small-size-title');
+    var currIdx = $('.step-nav__step__circle').index($('.step-nav__step--completing'));
+    var currStep = currIdx+1;
+    var $currStep = $('#s-content__current-step');
+
+    if(currIdx != -1){
+        $mobileTitle.text($stepTitle.eq(currIdx).text());
+        $currStep.text('Step0'+currStep);
+    }
 
 
-    </section>
 
-</div>
+}
 
+function changeNextToDone(){
+    $nextBtn.text('Save');
+}
 
+function changeDoneToNext(){
+    $nextBtn.text('Next');
+}
 
-</body>
-<script type="text/javascript" src="../js/common/jquery-3.2.1.min.js"></script>
-<script src="../js/long-paragraph.js"></script>
-</html>
+function disableAllBtn(){
+    $nextBtn.attr('disabled', true);
+    $preBtn.attr('disabled', true);
+}
+
+function disableBackBtn(){
+    $preBtn.attr('disabled', true);
+}
+
+function activeBackBtn(){
+    $preBtn.attr('disabled', false);   // 'BACK' 버튼 활성화
+}
+
+function activeNextBtn(){
+    $nextBtn.attr('disabled', false);   // 'BACK' 버튼 활성화
+}
+
+function disableNextBtn(){
+    $nextBtn.attr('disabled', true);
+}
+
+function hidePreBtn(){
+    $preBtn.addClass('step-controller__button--hidden');
+}
+
+function showPreBtn(){
+    $preBtn.removeClass('step-controller__button--hidden');
+}
+
+function hideBackBtn(){
+    $backBtn.addClass('step-controller__button--hidden');
+}
+
+function showBackBtn(){
+    $backBtn.removeClass('step-controller__button--hidden');
+}
