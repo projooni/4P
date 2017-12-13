@@ -11,7 +11,6 @@ var maxIdx = maxStep-1; // last index
 var completedIdx = 0;   // last completed index
 
 $(document).ready(function(){
-	console.log('step.js');
 
     $preBtn.addClass('step-controller__button--hidden');
 
@@ -20,9 +19,10 @@ $(document).ready(function(){
         if(!mobile.matches){
             $backBtn.css('width', '');
             $nextBtn.css('width', '');
+            showBackBtn();
         }else{
             if(completedIdx == maxIdx){
-                // 마지막 단계일 때 'SAVE'버튼을 100%로
+                // 마지막 단계일 때 'SAVE'버튼의 width를 100%로 변경
                 hideBackBtn();
                 $nextBtn.css('width', '100%');
             }
@@ -61,18 +61,20 @@ $(document).ready(function(){
 
         changeCurrStepText(0);
 
+        var $stepTitle = $('.step-nav__step__title span');
+        var $mobileTitle = $('.step-wrap__small-size-title');
+        var $currStep = $('#s-content__current-step');
+
+        // step 직접 클릭시 처리 이벤트
         $circle.on('click', function() {
 
-            // 클릭된 스텝 번호
-            var clickedCircle = $(this);
-            var currIdx = $('.step-nav__step__circle').index(clickedCircle);
+            var clickedCircle = $(this); // 클릭된 스텝 번호
+            var currIdx = $circle.index(clickedCircle);
             var click_step_number = currIdx+1;
 
             if (clickedCircle.hasClass("step-nav__step--completed") || clickedCircle.hasClass("step-nav__step--completing")) {
-                var $stepTitle = $('.step-nav__step__title span');
-                var $mobileTitle = $('.step-wrap__small-size-title');
+
                 var currStep = click_step_number;
-                var $currStep = $('#s-content__current-step');
 
                 $mobileTitle.text($stepTitle.eq(click_step_number - 1).text());
                 $currStep.text('Step0'+currStep);
@@ -90,12 +92,15 @@ $(document).ready(function(){
                 }
 
                 for(var index = 0; index < $circle.length; index++){
-                    if(index != currIdx){ // 현재 인덱스 제외하고 처리
+
+                    // 현재 인덱스 제외하고 처리
+                    if(index !== currIdx){
                         if(index <= completedIdx){ // completed step
                             $circle.eq(index).removeClass('step-nav__step--completing');
                             $circle.eq(index).addClass('step-nav__step--completed');
                         }
                     }
+
                 }
 
                 if(currIdx > 0){
@@ -163,7 +168,7 @@ function nextStep(event){
     var completedCircleLen = completedIdx+1;   // 완료된 스텝 수
     var currCircle = $('.step-nav__step__circle.step-nav__step--completing');
     var currIdx = $('.step-nav__step__circle').index(currCircle);
-    
+
     // 처음 완료되는 step이라면
     if(currIdx > completedIdx){
         completedIdx = currIdx;
@@ -181,10 +186,10 @@ function nextStep(event){
         completedCircleLen = completedIdx+1;
         currCircle.parent().nextAll('.step-nav__step').eq(0).find('.step-nav__step__circle').removeClass('step-nav__step--completed');
         currCircle.parent().nextAll('.step-nav__step').eq(0).find('.step-nav__step__circle').addClass('step-nav__step--completing');  // 1.5초 후 다음 스텝을 현재 스텝으로 전환한다
-        activeBackBtn();    //TODO 분리 필요
+        activeBackBtn();
 
         if(currIdx == maxIdx){   // 현재스텝이 마지막 스텝일 경우 'NEXT'를 'DONE' 버튼으로 전환한다
-            activeNextBtn();    // TODO 분리 필요
+            activeNextBtn();
             hidePreBtn();
             changeCurrStepText(completedCircleLen);
             changeNextToDone();
@@ -197,8 +202,8 @@ function nextStep(event){
         }else if(currIdx < maxIdx){  // 현재스텝이 마지막 스텝 이전일 경우엔 버튼만 활성화한다 ( 마지막 스텝 완료시엔 비활성화 유지 )
             changeDoneToNext();
             changeCurrStepText(completedCircleLen);
-            if(currIdx != maxIdx-1){
-                activeNextBtn();    // TODO 분리 필요
+            if(currIdx !== maxIdx-1){
+                activeNextBtn();
             }
 
         }
@@ -207,7 +212,8 @@ function nextStep(event){
 
 };
 
-function changeCurrStepText(completedSteps){
+// contents 영역 가운데, 현재 step을 나타내는 text를 변경한다.
+function changeCurrStepText(){
 
     var $stepTitle = $('.step-wrap .step-nav .step-nav__step .step-nav__step__title span');
     var $mobileTitle = $('.step-wrap__small-size-title');
@@ -215,12 +221,10 @@ function changeCurrStepText(completedSteps){
     var currStep = currIdx+1;
     var $currStep = $('#s-content__current-step');
 
-    if(currIdx != -1){
+    if(currIdx !== -1){
         $mobileTitle.text($stepTitle.eq(currIdx).text());
         $currStep.text('Step0'+currStep);
     }
-
-
 
 }
 
@@ -230,11 +234,6 @@ function changeNextToDone(){
 
 function changeDoneToNext(){
     $nextBtn.text('Next');
-}
-
-function disableAllBtn(){
-    $nextBtn.attr('disabled', true);
-    $preBtn.attr('disabled', true);
 }
 
 function disableBackBtn(){
@@ -247,10 +246,6 @@ function activeBackBtn(){
 
 function activeNextBtn(){
     $nextBtn.attr('disabled', false);   // 'BACK' 버튼 활성화
-}
-
-function disableNextBtn(){
-    $nextBtn.attr('disabled', true);
 }
 
 function hidePreBtn(){

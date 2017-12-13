@@ -49,40 +49,44 @@ $(document).ready(function(){
 	
 	
 	// ResizeFrame(frameName, 'frameName');
+
+	// Masonry 초기화
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: 160,
+        gutter: 3
+    });
+
+    $('.grid2').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+    });
 	
 	// TODO iFrame 로딩 시점을 잡는다.
 	// var target = document.getElementById("targetFrameId");
 	// isLoadCompleted(target);
 	
-	var $targetFrame = $('#targetFrameId');
+	var $targetFrame = $('[name=component-frame]');
 	$targetFrame.on('load', function(e){
 		console.log('iframe is loaded');
 		
 		var name = $(this).attr('name');
 		
-		var $contents = $(this).contents().find('#contents');
+		var $contents = $(this).contents();
 		var outerWidth = $contents.outerWidth();
-		var outerheight = $contents.outerHeight();
+		var outerHeight = $contents.outerHeight();
 		
 		$(this).css('width', outerWidth);
 		$(this).css('height', outerHeight);
-		$(this).parent().css('width', outerWidth);
-		$(this).parent().css('height', outerHeight);
-		
-		$('.grid').masonry({
-		  itemSelector: '.grid-item',
-		  columnWidth: 160
-		});
+		$(this).parent().css('width', outerWidth+2);
+		$(this).parent().css('height', outerHeight+2);
 
-		$('.grid2').masonry({
-		  itemSelector: '.grid-item',
-		  columnWidth: '.grid-sizer',
-		  percentPosition: true
-		});
-		
+
+        $('.grid').masonry('layout');
 		
 	});
-	
+
 
 	
 	

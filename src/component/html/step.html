@@ -4,195 +4,102 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Step</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, max-scale=1.0, user-scalable=0"> -->
-    <!-- <link rel="stylesheet" href="../css/header-and-footer-common.css">
-    <link rel="stylesheet" href="../css/three-depth-nav-and-basic-footer.css"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, max-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../css/common/component-common.css">
     <link rel="stylesheet" href="../css/step.css">
 </head>
 <body>
-<!--<div class="wrapper">-->
-<!--<div class="main">-->
-<!--<div class="header">-->
-<!--<div class="header__menu__toggle">-->
-<!--<div class="header__menu__hamburger">-->
-<!--<input class="hamburger__menu__btn" type="checkbox"/>-->
-
-<!--<img src="../img/ico-menu.png"/>-->
-
-<!--<div class="side__menu-list">-->
-<!--<div class="side__menu-list__profile">-->
-<!--<div class="side__menu-list__sign-out">-->
-<!--<img src="../img/ico-logout-768.png"/>-->
-<!--</div>-->
-<!--<div class="side__menu-list__user-img">-->
-<!--<img src="../img/img-userinfo.png"/>-->
-<!--<span>Elva Sandoval</span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<nav class="menu-tree">-->
-<!--<ul>-->
-<!--<li><a href="#">Menu 1</a>-->
-<!--<ul>-->
-<!--<li><a href="#">Menu 1-1</a></li>-->
-<!--<li><a href="#">Menu 1-2</a></li>-->
-<!--</ul>-->
-<!--</li>-->
-<!--<li><a href="#">Menu 2</a>-->
-<!--<ul>-->
-<!--<li><a href="#">Menu 2-1</a></li>-->
-<!--<li><a href="#">Menu 2-2</a></li>-->
-<!--<li><a href="#">Menu 2-3</a></li>-->
-<!--</ul>-->
-<!--</li>-->
-<!--<li><a href="#">Menu 3</a>-->
-<!--<ul>-->
-<!--<li><a href="#">Menu 3-1</a></li>-->
-<!--<li><a href="#">Menu 3-2</a></li>-->
-<!--<li><a href="#">Menu 3-3</a></li>-->
-<!--</ul>-->
-<!--</li>-->
-<!--<li><a href="#">Menu 4</a>-->
-<!--<ul>-->
-<!--<li><a href="#">Menu 4-1</a></li>-->
-<!--<li><a href="#">Menu 4-2</a></li>-->
-<!--<li><a href="#">Menu 4-3</a></li>-->
-<!--<li><a href="#">Menu 4-4</a></li>-->
-<!--</ul>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</nav>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="header__title">-->
-<!--<span>LOGO</span>-->
-<!--</div>-->
-<!--<div class="header__controls">-->
-<!--<div class="header__menu">-->
-<!--<ul>-->
-<!--<li class="active"><a href="#">Menu1</a></li>-->
-<!--<li><a href="#">Menu2</a></li>-->
-<!--<li><a href="#">Menu3</a></li>-->
-<!--<li><a href="#">Menu4</a></li>-->
-<!--</ul>-->
-<!--</div>-->
-<!--<div class="header__right-control">-->
-<!--<form class="header__search-form">-->
-<!--<div class="header__search-back-icon">-->
-<!--<img src="../img/ico-back-768.png"/>-->
-<!--<input type="checkbox" />-->
-<!--</div>-->
-<!--<input type="text" class="form-control" placeholder="주요 검색 조건">-->
-<!--<div class="header__search-form-icon">-->
-<!--<img class="header__search-del-icon" src="../img/ico-del-768.png"/>-->
-<!--<img src="../img/ico-search-768.png"/>-->
-<!--<input type="checkbox" />-->
-<!--</div>-->
-<!--</form>-->
-<!--<div class="header__profile">-->
-<!--<img src="../img/img-userinfo.png" alt="" class="header__profile__image-circle">-->
-<!--<span class="header__profile__name">Elva Sandoval</span>-->
-<!--<span class="header__profile__sign">Sign Out</span>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
 <div id="contents">
-    <!--<div id="sub-title">-->
-
-    <!--<span>Step</span>-->
-    <!--</div>-->
     <div id="content">
 
-        <div class="step-wrapper">
+        <div class="step-wrap">
             <div class="step-nav-wrapper">
                 <div class="step-nav">
 
-                    <div class="step" data-content="1">
-                        <div class="circle first-step completing">
-                            <span class="number">1</span>
-                            <span class="check-img">
-                        <div class="checkmark"></div>
-                    </span>
+                    <div class="step-nav__step" data-content="1">
+                        <div class="step-nav__step__circle step-nav__step--completing">
+                            <span class="step-nav__step__number">1</span>
+                            <span class="step-nav__step__check-mark-wrap">
+                                <div class="step-nav__step__check-mark"></div>
+                            </span>
                         </div>
-                        <div class="title">
+                        <div class="step-nav__step__title">
                             <span>Step 01 Title</span>
                         </div>
                     </div>
 
-                    <div class="table-cell progress-wrapper">
-                        <div class="progress" data-content="2">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                    <div class="step-nav__table-cell step-nav__progress-wrapper">
+                        <div class="step-nav__progress" data-content="2">
+                            <div class="step-nav__progress-bar step-nav__progress-bar--success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>
                     </div>
 
-                    <div class="step" data-content="2">
-                        <div class="circle second-step">
-                            <span class="number">2</span>
-                            <span class="check-img">
-                        <div class="checkmark"></div>
+                    <div class="step-nav__step" data-content="2">
+                        <div class="step-nav__step__circle">
+                            <span class="step-nav__step__number">2</span>
+                            <span class="step-nav__step__check-mark-wrap">
+                        <div class="step-nav__step__check-mark"></div>
                     </span>
                         </div>
-                        <div class="title">
+                        <div class="step-nav__step__title">
                             <span>Step 02 Title</span>
                         </div>
                     </div>
 
-                    <div class="table-cell progress-wrapper">
-                        <div class="progress" data-content="3">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                    <div class="step-nav__table-cell step-nav__progress-wrapper">
+                        <div class="step-nav__progress" data-content="3">
+                            <div class="step-nav__progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>
                     </div>
 
-                    <div class="step" data-content="3">
-                        <div class="circle third-step">
-                            <span class="number">3</span>
-                            <span class="check-img">
-                        <div class="checkmark"></div>
+                    <div class="step-nav__step" data-content="3">
+                        <div class="step-nav__step__circle">
+                            <span class="step-nav__step__number">3</span>
+                            <span class="step-nav__step__check-mark-wrap">
+                        <div class="step-nav__step__check-mark"></div>
                     </span>
                         </div>
-                        <div class="title">
+                        <div class="step-nav__step__title">
                             <span>Step 03 Title</span>
                         </div>
                     </div>
 
-                    <div class="table-cell progress-wrapper">
-                        <div class="progress" data-content="4">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                    <div class="step-nav__table-cell step-nav__progress-wrapper">
+                        <div class="step-nav__progress" data-content="4">
+                            <div class="step-nav__progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>
                     </div>
 
-                    <div class="step" data-content="4">
-                        <div class="circle third-step">
-                            <span class="number">4</span>
-                            <span class="check-img">
-                        <div class="checkmark"></div>
+                    <div class="step-nav__step" data-content="4">
+                        <div class="step-nav__step__circle">
+                            <span class="step-nav__step__number">4</span>
+                            <span class="step-nav__step__check-mark-wrap">
+                        <div class="step-nav__step__check-mark"></div>
                     </span>
                         </div>
-                        <div class="title">
+                        <div class="step-nav__step__title">
                             <span>Step 04 Title</span>
                         </div>
                     </div>
 
-                    <div class="table-cell progress-wrapper">
-                        <div class="progress" data-content="5">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                    <div class="step-nav__table-cell step-nav__progress-wrapper">
+                        <div class="step-nav__progress" data-content="5">
+                            <div class="step-nav__progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>
                     </div>
 
-                    <div class="step" data-content="5">
-                        <div class="circle third-step">
-                            <span class="number">5</span>
-                            <span class="check-img">
-                        <div class="checkmark"></div>
+                    <div class="step-nav__step" data-content="5">
+                        <div class="step-nav__step__circle">
+                            <span class="step-nav__step__number">5</span>
+                            <span class="step-nav__step__check-mark-wrap">
+                        <div class="step-nav__step__check-mark"></div>
                     </span>
                         </div>
-                        <div class="title">
+                        <div class="step-nav__step__title">
                             <span>Step 05 Title</span>
                         </div>
                     </div>
@@ -202,19 +109,19 @@
 
 
             </div>
-            <div class="mobile-title"></div>
+            <div class="step-wrap__small-size-title"></div>
         </div>
 
-        <div id="content-text">
-            <span id="curr-step">Step01</span>
+        <div id="s-content">
+            <span id="s-content__current-step">Step01</span>
             <span>Content Area</span>
         </div>
 
-        <div class="controller">
-            <div class="btn-area">
-                <button type="button" class="btn btn-primary left pre hidden" disabled>Previous</button>
-                <button type="button" class="btn btn-primary left back" disabled>Cancel</button>
-                <button type="button" class="btn btn-primary right next">Next</button>
+        <div class="step-controller">
+            <div class="step-controller__wrap">
+                <button type="button" class="step-controller__pre step-controller__button--hidden" disabled>Previous</button>
+                <button type="button" class="step-controller__back" disabled>Cancel</button>
+                <button type="button" class="step-controller__next">Next</button>
             </div>
         </div>
 
@@ -224,7 +131,7 @@
 </div>
 
 
-<script type="text/javascript" src="../../doc/js/lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/common/jquery-3.2.1.min.js"></script>
 <script src="../js/step.js"></script>
 </body>
 </html>

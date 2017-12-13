@@ -1,109 +1,3 @@
-/*@font-face {*/
-    /*font-family: 'Roboto';*/
-    /*src: url('./fonts/roboto/Roboto-Bold-webfont.eot');*/
-    /*src: url('./fonts/roboto/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),*/
-    /*url('./fonts/roboto/Roboto-Bold-webfont.woff') format('woff'),*/
-    /*url('./fonts/roboto/Roboto-Bold-webfont.ttf') format('truetype'),*/
-    /*url('./fonts/roboto/Roboto-Bold-webfont.svg#robotobold') format('svg');*/
-    /*font-weight: bold;*/
-/*}*/
-
-/*@font-face {*/
-    /*font-family: 'Roboto';*/
-    /*src: url('./fonts/roboto/Roboto-Regular-webfont.eot');*/
-    /*src: url('./fonts/roboto/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),*/
-    /*url('./fonts/roboto/Roboto-Regular-webfont.woff') format('woff'),*/
-    /*url('./fonts/roboto/Roboto-Regular-webfont.ttf') format('truetype'),*/
-    /*url('./fonts/roboto/Roboto-Regular-webfont.svg#robotoregular') format('svg');*/
-    /*font-weight: normal;*/
-/*}*/
-
-/*@font-face {*/
-    /*font-family: 'Roboto';*/
-    /*src: url('./fonts/roboto/Roboto-Thin-webfont.eot');*/
-    /*src: url('./fonts/roboto/Roboto-Thin-webfont.eot?#iefix') format('embedded-opentype'),*/
-    /*url('./fonts/roboto/Roboto-Thin-webfont.woff') format('woff'),*/
-    /*url('./fonts/roboto/Roboto-Thin-webfont.ttf') format('truetype'),*/
-    /*url('./fonts/roboto/Roboto-Thin-webfont.svg#robotothin') format('svg');*/
-    /*font-weight: 100;*/
-/*}*/
-
-/* media query */
-@media only screen and (max-width: 768px) {
-    /* 모바일 */
-    #content .step-wrapper{
-        padding: 0px 12px;
-    }
-
-    .title{
-        display: none;
-    }
-    div.step-wrapper .mobile-title{
-        display: block;
-        /*padding: 0px 28px;*/
-        text-align: left;
-    }
-    div.step-wrapper div.step-nav-wrapper{
-        margin-bottom: 0px !important;
-        padding-left: 28px;
-        padding-right: 28px;
-        padding-bottom: 20px;
-        /*min-width: 284px;*/
-        width: calc(100% - 28px * 2);
-        border-bottom: 1px solid #ebebeb;
-    }
-    div.controller .btn-area button.pre{
-        display: none;
-    }
-    div.controller .btn-area button.back{
-        width: 50%;
-        height: 45px;
-        margin: 0px;
-
-    }
-    div.controller .btn-area button.next{
-        width: 50%;
-        height: 45px;
-    }
-    body #contents #content{
-        height: calc(100% - 20px * 2 - 20px * 2);
-        margin: 20px 10px;
-        padding: 20px 0px;
-    }
-    #contents #sub-title{
-        margin-bottom: 13px;
-        display: none;
-    }
-    #content div.controller{
-        width: calc(100% - 10px * 2);
-        bottom: 20px;
-    }
-}
-
-@media only screen and (max-width: 1024px) and (min-width: 768px) {
-    /* 태블릿 */
-    div#contents div#sub-title{
-        display: none;
-    }
-    body #contents #content{
-        height: calc(100% - 20px * 2 - 30px * 2);
-        margin: 20px;
-        padding: 30px 0px;
-    }
-    div.controller .btn-area button.pre{
-        display: none;
-    }
-    #content div.controller{
-        width: calc(100% - 20px * 2);
-        bottom: 20px;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    /* PC */
-
-
-}
 
 /* reset. TODO 공통으로 이동 */
 html{ width: 100%; height: 100%;}
@@ -114,23 +8,18 @@ body{
     margin: 0;
     padding: 0px;
     font-family: Arial, sans-serif;
-    background-color: #fff;
+    background-color: #f8f8f8;
 
 }
 
 #contents{
     background-color: #f8f8f8;
-    /*width: 100%;*/
     height: 100%;
-    /*padding: 50px 60px;*/
     min-width: 360px;
     position: relative;
     max-width: 1600px;
     margin: 0 auto;
     min-height: 200px;
-    /*padding: 32px;*/
-    /*border-top: 1px solid #ccc;*/
-    /*border-bottom: 1px solid #ccc;*/
     overflow: hidden;
 }
 
@@ -146,7 +35,7 @@ body{
     margin: 32px;
     padding: 30px 0px;
 }
-#content #content-text{
+#content #s-content{
     position: absolute;
     left: 50%;
     top: 50%;
@@ -154,12 +43,12 @@ body{
     color: rgba(29, 29, 29, 0.1);
     font-size: 30px;
 }
-#content #content-text > span{
+#content #s-content > span{
     display: inline-block;
 }
 
 /* display 테이블 관련 속성으로 변경 */
-.table-cell{
+.step-nav__table-cell{
     display: table-cell;
 }
 
@@ -168,16 +57,14 @@ body{
 }
 
 /* 가장 바깥 wrapper */
-div.step-wrapper{
+.step-wrap{
     margin: 0 auto;
-    /*min-width: 340px;*/
-    /*max-width: 1600px;*/
     position: relative;
     text-align: center;
 }
 
 /* Step, Progress-bar 를 위한 2중 wrapper */
-div.step-nav-wrapper{
+.step-nav-wrapper{
     width: calc(100% - 60px * 2);
     background-color: transparent;
     display: inline-table;
@@ -185,27 +72,27 @@ div.step-nav-wrapper{
 }
 
 /* mobile 해상도에서 Title 표시하는 부분 */
-.mobile-title{
+.step-wrap__small-size-title{
     display: none;
-    margin-top: 7px;
+    margin-top: 15px;
     font-size: 18px;
     color: rgba(0,0,0,0.85);
 }
 
 /* Step, Progress-bar 를 위한 wrapper */
-div.step-nav-wrapper div.step-nav{
+.step-nav-wrapper .step-nav{
     margin-top: 10px;
     display: table-row;
 }
 
 /* progress-bar의 배경과 실제 gauge 를 포함하는 wrapper */
-.progress-wrapper{
+.step-nav__progress-wrapper{
     padding: 0px 5px;
     vertical-align: middle;
 }
 
 /* progress-bar 배경 */
-div.step-nav-wrapper div.step-nav div.progress{
+.step-nav-wrapper .step-nav .step-nav__progress{
     vertical-align: middle;
     border-radius: 4px;
     background-color: #cccccc;
@@ -214,13 +101,13 @@ div.step-nav-wrapper div.step-nav div.progress{
 }
 
 /* progress-bar gauge */
-div.step-nav-wrapper div.step-nav div.progress div.progress-bar{
+.step-nav-wrapper .step-nav .step-nav__progress .step-nav__progress-bar{
     min-width: 0;
     height: 2px;
 }
 
 /* step */
-div.step{
+.step-nav__step{
     position: relative;
     display: table-cell;
     width: 30px;
@@ -232,13 +119,13 @@ div.step{
     cursor: default;
 }
 
-div.step .completing,
-div.step .completed{
+.step-nav__step .step-nav__step--completing,
+.step-nav__step .step-nav__step--completed{
     cursor: pointer;
 }
 
 /* step contents */
-div.step div.circle{
+.step-nav__step__circle{
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -252,7 +139,7 @@ div.step div.circle{
 }
 
 /* step contents - number */
-div.step div.circle span.number{
+.step-nav__step__circle span.step-nav__step__number{
     display: table-cell;
     text-align: center;
     width: 35px;
@@ -265,7 +152,7 @@ div.step div.circle span.number{
 }
 
 /* step contents - checked image */
-div.step div.circle span.check-img{
+.step-nav__step__circle span.step-nav__step__check-mark-wrap{
     display: none;
     position: absolute;
     left: 0;
@@ -275,28 +162,27 @@ div.step div.circle span.check-img{
 }
 
 /* working status */
-div.step div.circle.completing{
+.step-nav__step__circle.step-nav__step--completing{
     background-color: #1fcd84;
     border: none;
- }
-div.step div.circle.completing .number{
+}
+.step-nav__step__circle.step-nav__step--completing .step-nav__step__number{
     margin-top: 0px;
     margin-lefT: 0px;
-    /*font-weight: bold;*/
 }
 
-div.step div.circle.completing .number{
+.step-nav__step__circle.step-nav__step--completing .step-nav__step__number{
     color: #fff;
     font-weight: bold;
 }
 
 /* completed status */
-div.step div.circle.completed{
+.step-nav__step__circle.step-nav__step--completed{
     border: none;
 }
 
 /* show checked images when progressing work is done */
-div.step div.circle.completed span.check-img{
+.step-nav__step__circle.step-nav__step--completed span.step-nav__step__check-mark-wrap{
     display: inline-block;
     width: 35px;
     height: 35px;
@@ -305,7 +191,7 @@ div.step div.circle.completed span.check-img{
 }
 
 /* title of each step */
-div.title{
+.step-nav__step__title{
     position: absolute;
     top: 42px;
     left: 3px;
@@ -315,33 +201,26 @@ div.title{
     font-size: 14px;
 }
 
-div.title span{
+.step-nav__step__title span{
     color: rgba(0,0,0,0.85);
 }
 
-div.step div.circle.completing + .title span{
+.step-nav__step__circle.step-nav__step--completing + .step-nav__step__title span{
     /*font-weight: bold;*/
 }
-div.step div.circle.completed + .title span{
+.step-nav__step__circle.step-nav__step--completed + .step-nav__step__title span{
     color: rgba(0,0,0,0.5);
 }
 
 /* step title */
-div.title span{
+.step-nav__step__title span{
     display: table-cell;
     text-align: center;
     width: 150px;
 }
 
-/* completed progress-bar */
-div.progress div.progress-bar.completed{
-    /* progress-bar fill animation is removed*/
-    /*background-color: #adb5bd;*/
-    /*animation: fill-progress-bar 1.5s forwards;*/
-}
-
 /* contents area */
-div.controller{
+.step-controller{
     position: absolute;
     width: calc(100% - 32px * 2);
     bottom: 32px;
@@ -349,7 +228,8 @@ div.controller{
 }
 
 /* button area */
-div.controller .btn-area{
+.step-controller .step-controller__wrap{
+    font-size: 0;
     vertical-align: middle;
     position: relative;
     text-align: right;
@@ -357,58 +237,47 @@ div.controller .btn-area{
 }
 
 /* back, next button */
-div.controller .btn-area button{
+.step-controller__wrap button{
     padding: 6px 30px;
     display: inline-block;
-    /*border: none;*/
     width: 107px;
     height: 35px;
     cursor: pointer;
     clear: both;
 }
-div.controller .btn-area button:hover{
+.step-controller__wrap button:hover{
     opacity: 0.8;
 }
-div.controller .btn-area button:focus{
+.step-controller__wrap button:focus{
 }
-button.pre{
+button.step-controller__pre{
     float: left;
     background-color: #fff;
     color: rgba(29,29,29, 0.85);
     border: 1px solid #ccc;
 }
-button.back{
+button.step-controller__back{
     background-color: #fff;
     border: 1px solid #ccc;
     color: rgba(29,29,29, 0.85);
     margin-right: 12px;
 }
-button.next{
+button.step-controller__next{
     background-color: #1fcd84;
     color: #fff;
     font-weight: bold;
     border: none;
 }
 
-/* animation : progress-bar */
-/*@keyframes fill-progress-bar {*/
-    /*0%{*/
-        /*width: 0%;*/
-    /*}*/
-    /*100%{*/
-        /*width: 100%;*/
-    /*}*/
-/*}*/
-
 /* checked image */
-.checkmark {
+.step-nav__step__check-mark {
     display: block;
     width: 14px;
     height: 8px;
     position: relative;
 }
 
-.checkmark:after {
+.step-nav__step__check-mark:after {
     -moz-transform: scaleX(-1) rotate(135deg);
     -ms-transform: scaleX(-1) rotate(135deg);
     -webkit-transform: scaleX(-1) rotate(135deg);
@@ -428,7 +297,76 @@ button.next{
     width: 7px;
 }
 
-.hidden{
+.step-controller__button--hidden{
     display: none !important;
+}
+
+/* media query */
+@media only screen and (max-width: 768px) {
+    /* 모바일 */
+    #content .step-wrap{
+        padding: 0px 12px;
+    }
+
+    .step-nav__step__title{
+        display: none;
+    }
+    .step-wrap .step-wrap__small-size-title{
+        display: block;
+        text-align: left;
+    }
+    .step-wrap .step-nav-wrapper{
+        margin-bottom: 0px !important;
+        padding-left: 28px;
+        padding-right: 28px;
+        padding-bottom: 20px;
+        width: calc(100% - 28px * 2);
+        border-bottom: 1px solid #ebebeb;
+    }
+    button.step-controller__pre{
+        display: none;
+    }
+    button.step-controller__back{
+        width: 50%;
+        height: 45px;
+        margin: 0;
+
+    }
+    button.step-controller__next{
+        width: 50%;
+        height: 45px;
+    }
+    body #contents #content{
+        height: calc(100% - 20px * 2 - 20px * 2);
+        margin: 20px 10px;
+        padding: 20px 0px;
+    }
+    #contents #sub-title{
+        margin-bottom: 13px;
+        display: none;
+    }
+    #content .step-controller{
+        width: calc(100% - 10px * 2);
+        bottom: 20px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    /* 태블릿 */
+    div#contents div#sub-title{
+        display: none;
+    }
+    body #contents #content{
+        height: calc(100% - 20px * 2 - 30px * 2);
+        margin: 20px;
+        padding: 30px 0;
+    }
+    button.step-controller__pre{
+        display: none;
+    }
+    #content .step-controller{
+        width: calc(100% - 20px * 2);
+        bottom: 20px;
+    }
 }
 

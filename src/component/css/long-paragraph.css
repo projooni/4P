@@ -5,25 +5,25 @@
     body{
         overflow-y: hidden;
     }
-    #content-text #content{
+    .content{
         padding: 20px 10px;
     }
-    #content .dropdown{
+    .content .lp-dropdown{
         display: block;
         position: fixed;
         width: calc(100% - 10px * 2);
     }
-    #content #paragraph-area{
+    .content .lp-paragraph-area{
         margin-top: 40px;
         height: calc(100% - 20px - 40px);
     }
-    #content #paragraph-area::-webkit-scrollbar {
+    .content .lp-paragraph-area::-webkit-scrollbar {
         display: none;
     }
-    #paragraph-area article.paragraph{
+    .lp-paragraph-area article.lp-paragraph-area__paragraph{
         margin-top: 20px;
     }
-    #content > span.mask-gradient{
+    .content > span.lp-mask-gradient{
         display: block;
         height: 20px;
         width: calc(100% - 10px * 2);
@@ -32,22 +32,22 @@
 
 @media only screen and (max-width: 1024px) and (min-width: 760px) {
     /* 태블릿 */
-    #content-text #content{
+    .content{
         padding: 20px;
     }
-    #content .dropdown{
+    .content .lp-dropdown{
         position: fixed;
         display: block;
         width: calc(100% - 20px * 2);
     }
-    #content #paragraph-area{
+    .content .lp-paragraph-area{
         margin-top: 40px;
         height: calc(100% - 20px - 40px);
     }
-    #content #paragraph-area::-webkit-scrollbar {
+    .content .lp-paragraph-area::-webkit-scrollbar {
         display: none;
     }
-    #content > span.mask-gradient{
+    .content > span.lp-mask-gradient{
         display: block;
         width: calc(100% - 20px * 2);
     }
@@ -56,7 +56,10 @@
 
 @media only screen and (min-width: 1024px) {
     /* PC */
-    #content #paragraph-area{
+    .content {
+        padding: 32px;
+    }
+    .content .lp-paragraph-area{
         height: calc(100% - 30px);
     }
 }
@@ -70,30 +73,24 @@ body{
     padding: 0px;
     font-size: 12px;
     font-family: Arial, sans-serif;
-
 }
 
-#content-text{
-    max-width: 1600px;
-    min-width: 360px;
-    margin: 0 auto;
-    height: 100%;
-}
-
-#content-text #title{
+#title{
     border-bottom: 1px solid #ccc;
     font-size: 24px;
     color: #1d1d1d;
 }
 
-#content{
-    padding: 32px;
+.content{
     height: 100%;
     position: relative;
+    max-width: 1600px;
+    min-width: 360px;
+    margin: 0 auto;
 }
 
-#content > .mask-gradient{
-    background: url('../img/gradient-white.png') repeat-x;
+.content > .lp-mask-gradient{
+    background: url('../img/img-gradient-white.png') repeat-x;
     position: absolute;
     top: 60px;
     display: none;
@@ -101,13 +98,13 @@ body{
     height: 30px;
 }
 
-#content-text #content article,
-#content-text #content p{
+.content article,
+.content p{
     margin-right: 0px;
     margin-left: 0px;
 }
 
-#content-text #content .sub-title{
+.content .lp-paragraph-area__paragraph__sub-title{
     font-size: 16px;
     color: rgba(0,0,0,0.85);
     font-weight: bold;
@@ -116,7 +113,7 @@ body{
     min-width: 340px;
 }
 
-#content-text #content .sub-content{
+.content .lp-paragraph-area__paragraph__sub-content{
     margin-top: 0px;
     margin-bottom: 0px;
     min-width: 340px;
@@ -136,29 +133,17 @@ body{
     overflow:hidden;
 }
 
-#paragraph-area{
+.lp-paragraph-area{
     overflow-y: auto;
     overflow-x: hidden;
     height: calc(100% - 30px);
 }
 
-/*#paragraph-area:after{*/
-    /*content:'';*/
-    /*position: absolute;*/
-    /*left: 0px;*/
-    /*top: 0px;*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*background-image: -webkit-linear-gradient(#eee, #333);*/
-    /*-webkit-background-clip: text;*/
-    /*-webkit-text-fill-color: transparent;*/
-/*}*/
-
-article.paragraph{
+article.lp-paragraph-area__paragraph{
     margin-top: 30px;
 }
 
-.dropdown {
+.lp-dropdown {
     position: relative;
     display: none;
     text-overflow:ellipsis;
@@ -167,7 +152,7 @@ article.paragraph{
     overflow:hidden;
 }
 
-.dropdown button {
+.lp-dropdown button {
     width: 100%;
     height: 40px;
     line-height: 40px;
@@ -179,20 +164,19 @@ article.paragraph{
     font-size: 16px;
     color: rgba(0, 0, 0, 0.8);
     background-color: #fff;
-    background: url("../img/ico_arrow_drop_down_360.png") 98% 50% no-repeat;
-    font-family: Regular;
+    background: url("../img/ic-arrow-solid-down.svg") 98% 50% no-repeat;
     text-overflow:ellipsis;
     white-space:nowrap;
     word-wrap:normal;
     overflow:hidden;
 }
 
-.dropdown button.open {
+.lp-dropdown button.lp-dropdown--open {
     border: 1px solid #1fcd84;
-    background: url("../img/ico_arrow_up_360.png") 98% 50% no-repeat;
+    background: url("../img/ic-arrow-solid-up.svg") 98% 50% no-repeat;
 }
 
-.dropdown ul {
+.lp-dropdown ul {
     display: none;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -205,13 +189,13 @@ article.paragraph{
     padding-left: 0px;
 }
 
-.dropdown ul.open {
+.lp-dropdown ul.lp-dropdown--open {
     display: block;
     background-color: #fff;
     position: relative;
 }
 
-.dropdown ul li {
+.lp-dropdown ul li {
     height: 40px;
     line-height: 40px;
     padding-left: 15px;
@@ -225,12 +209,11 @@ article.paragraph{
     font-size: 16px;
 }
 
-.dropdown ul li.active {
+.lp-dropdown ul li.lp-dropdown__item--active {
     color: #1fcd84;
-    /*font-weight: bold;*/
 }
 
-.dropdown ul li:hover {
+.lp-dropdown ul li:hover {
     background-color: rgba(29, 29, 29, 0.05);
     cursor: pointer;
 }

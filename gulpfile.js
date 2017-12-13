@@ -126,6 +126,7 @@ gulp.task('watch', function(){
     gulp.watch(path.src.root + '**/*.scss', ['build-sass']).on('change', browserSync.reload);
     gulp.watch(path.src.root + '**/*.js', ['build-js']).on('change', browserSync.reload);
     gulp.watch(path.src.root + '**/*.html', ['copy-html']).on('change', browserSync.reload);
+    gulp.watch(path.src.root + '**/*.css', ['copy-css']).on('change', browserSync.reload);
     gulp.watch(path.src.root + 'img/**/*', ['copy-img']).on('change', browserSync.reload);
 });
 
