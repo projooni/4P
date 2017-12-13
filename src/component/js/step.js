@@ -11,6 +11,7 @@ var maxIdx = maxStep-1; // last index
 var completedIdx = 0;   // last completed index
 
 $(document).ready(function(){
+	console.log('step.js');
 
     $preBtn.addClass('step-controller__button--hidden');
 

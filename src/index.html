@@ -2,12 +2,99 @@
 	<head>
 		
 		<meta charset="UTF-8">
-		
+		<link rel="stylesheet" href="doc/css/doc.css">
+		<script src="doc/js/lib/jquery-3.2.1.min.js"></script>
+    	<script src="//naver.github.io/egjs-infinitegrid/release/latest/dist/infinitegrid.pkgd.js"></script>
+		<!-- <script src="../node_modules/handlebars/dist/handlebars.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script> -->
+		<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 	</head>
 	<body>
 		<header>header</header>
-		UI Store2
+		
+		<a href="/component/html/step.html">Step</a>
+		
+		<!-- infinite grid -->
+		<!-- <div id="grid" class="row" style="visibility:hidden"></div> -->
+		<!-- <div id="grid" class="row"></div> -->
+		
+		<h1>Masonry - columnWidth</h1>
+
+		<div class="grid">
+		  <div class="grid-item"></div>
+		  <div class="grid-item">
+		  	<iframe id="targetFrameId" name="targetFrameName" src="/component/html/step.html" frameborder="0"></iframe>
+		  </div>
+		  <div class="grid-item grid-item--height3">
+		  	<IMG src="http://open.thumbshots.org/image.aspx?url=http://code-container.run.goorm.io/component/html/step.html" border=1>
+		  </div>
+		  <div class="grid-item grid-item--height2"></div>
+		  <div class="grid-item grid-item--width3"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		  <div class="grid-item grid-item--width2 grid-item--height3"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--width2 grid-item--height2"></div>
+		  <div class="grid-item grid-item--width2"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--height3"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		</div>
+		
+		<h1>Masonry - fluid columnWidth</h1>
+
+		<div class="grid2">
+		  <div class="grid-sizer"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--width2 grid-item--height2"></div>
+		  <div class="grid-item grid-item--height3"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		  <div class="grid-item grid-item--width3"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		  <div class="grid-item grid-item--width2 grid-item--height3"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--width2 grid-item--height2"></div>
+		  <div class="grid-item grid-item--width2"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--height3"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item"></div>
+		  <div class="grid-item grid-item--height2"></div>
+		</div>
+
 		
 		<footer>footer</footer>
+		
+		<!-- <script id="items-template" type="text/x-handlebars-template">
+			{{~#each items~}}
+			<div class="item">
+				<div class="thumbnail">
+					<img class="img-rounded" src="{{imgSrc}}" />
+					<div class="caption">
+						<p><a href="{{href}}">{{desc}}</a></p>
+					</div>
+				</div>
+			</div>
+			{{~/each~}}
+		</script> -->
+		<script src='doc/js/index.js'></script>
+		
 	</body>
 </html>
