@@ -26,7 +26,7 @@ var path = {
 
 var config = {
     pathRoot : path.src,
-    port : 3011
+    port : 7000
 };
 
 var scssOptions = {
@@ -108,6 +108,12 @@ gulp.task('build-sass', function(){
 
 });
 
+gulp.task('copy-css', function(){
+	gulp.src([path.src.component + 'css/**/*.css'])
+		.pipe(gulp.dest(path.dist.component + 'css'))
+		.pipe(browserSync.stream());
+});
+
 // copy images
 gulp.task('copy-img', function(){
     gulp.src([path.src.doc + 'img/**/*'])
@@ -136,4 +142,4 @@ gulp.task('server', function(){
 
 });
 
-gulp.task('default', ['copy-html', 'build-js', 'build-sass', 'copy-img', 'server', 'watch']);
+gulp.task('default', ['copy-html', 'build-js', 'build-sass', 'copy-css', 'copy-img', 'server', 'watch']);
