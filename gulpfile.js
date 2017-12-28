@@ -119,6 +119,10 @@ gulp.task('copy-img', function(){
     gulp.src([path.src.doc + 'img/**/*'])
         .pipe(gulp.dest(path.dist.doc + 'img'))
         .pipe(browserSync.stream());
+
+    gulp.src([path.src.component + 'img/**/*'])
+        .pipe(gulp.dest(path.dist.component + 'img'))
+        .pipe(browserSync.stream());
 });
 
 // watch
