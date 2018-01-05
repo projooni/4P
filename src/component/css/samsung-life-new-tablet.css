@@ -13,6 +13,7 @@ html,body{
     margin: 0;
     padding: 0px;
     box-sizing: border-box;
+    color: #434d5d;
 }
 
 #alarm-clock-wrap {
@@ -355,6 +356,17 @@ html,body{
     height: 100%;
     background: #efefef;
     position: relative;
+
+}
+
+#parallax-transition-wrap .gnb{
+    width: 100%;
+    height: 70px;
+    background : url('../img/GNB.png') center no-repeat;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1000;
 }
 
 #parallax-transition-wrap .menu-area{
@@ -375,15 +387,16 @@ html,body{
     position: relative;
     z-index: 1000;
     margin-top: 30px;
+    color: #434d5d;
 }
 .active-border{
     position: absolute;
     display: none;
     width: 200px;
     height: 50px;
-    border: 1px solid #000000;
+    border: 1px solid #434d5d;
     border-radius: 20px;
-    color: #DD2266;
+    color: #434d5d;
     z-index: 999;
 }
 #parallax-transition-wrap .menu-area button:focus{
@@ -411,11 +424,24 @@ html,body{
 
 #parallax-transition-wrap .menu-area .welcome-text{
     font-size:36px;
+
 }
 
 #parallax-transition-wrap .menu-area .welcome-text .name{
     font-weight: bold;
+    /*text-decoration: underline;*/
+    position: relative;
 }
+#parallax-transition-wrap .menu-area .welcome-text .name:after{
+    content: '';
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: -3px;
+    height: 2px;
+    background-color: #434d5d;
+}
+
 
 .menu-content-1, .menu-content-2, .menu-content-3{
     display: none;
