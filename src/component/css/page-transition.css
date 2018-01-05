@@ -1,0 +1,72 @@
+html,body{
+    margin: 0;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.text-contents{
+    position: absolute;
+    z-index: 1001;
+}
+.btn-area{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+
+}
+.btn-area button{
+    width: 100px;
+    height: 80px;
+}
+
+#page-transition{
+    width: 100%;
+    height: 100%;
+    background: #efefef;
+    position: relative;
+}
+
+.page{
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+    z-index: 999;
+    /*transform: translateY(100%);*/
+
+}
+
+.page-0{
+    background: red;
+    animation: bottom-to-top 1s linear;
+    /*transition: transform 1s;*/
+}
+.page-1{
+    background: blue;
+    animation: bottom-to-top 1s linear;
+    /*transition: transform 1s;*/
+}
+.page-2{
+    background: green;
+    animation: bottom-to-top 1s linear;
+    /*transition: transform 1s;*/
+}
+
+.bottom-to-top{
+    transform: translateY(0%) !important;
+}
+
+@keyframes bottom-to-top {
+    0%{
+        transform: translateY(100%);
+        z-index: 1000;
+    }
+    100%{
+        transform: translateY(0%);
+        z-index: 1000;
+    }
+}

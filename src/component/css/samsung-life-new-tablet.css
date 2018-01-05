@@ -439,7 +439,7 @@ html,body{
 .menu-content-2 .consulting-card img{
     position: absolute;
     top: 25%;
-    right: 10%;
+    right: 15%;
 }
 .menu-content-3{
     background-color:#efefef;
@@ -463,13 +463,15 @@ html,body{
 }
 
 
+/* 이미지 3장 돌리기 인터랙션 */
 #rotate-image-area{
     display: inline-block;
     position: absolute;
-    right: 10%;
-    top: 10%;
-    width: 500px;
+    right: 25%;
+    top: 50%;
+    width: 350px;
     height: 500px;
+    transform: translateY(-50%);
 }
 
 #wrap {
@@ -479,17 +481,10 @@ html,body{
     background: #efefef;
 }
 
-#spacer {
-    height: 50%;
-    width: 100%;
-    background: #ffffff;
-}
-
 #slides {
     position: relative;
-    top: 30%;
-    width: 500px;
-    height: 350px;
+    width: 350px;
+    height: 500px;
     margin: 0 auto;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -501,9 +496,8 @@ html,body{
     position: absolute;
     left: 0;
     top: 0;
-    width: 500px;
-    height: 350px;
-    background-color: #e0e0e0;
+    width: 350px;
+    height: 500px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -523,32 +517,16 @@ html,body{
     -webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
 }
-/*.slide::before {*/
-    /*content: '\2022 \2022 \2022';*/
-    /*color: #999;*/
-    /*font-size: 40px;*/
-    /*line-height: 30px;*/
-    /*padding-left: 8px;*/
-    /*letter-spacing: 2px;*/
-    /*display: block;*/
-    /*height: 30px;*/
-    /*background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#ccc));*/
-    /*background: linear-gradient(#ddd, #ccc);*/
-    /*background-clip: padding-box;*/
-    /*-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);*/
-    /*box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);*/
-    /*border-bottom: 1px solid rgba(0, 0, 0, 0.3);*/
-/*}*/
 .slide img {
-    width: 500px;
-    height: 350px;
+    width: 350px;
+    height: 500px;
     -o-object-fit: cover;
     object-fit: cover;
 }
 
 .slide-left {
-    -webkit-transform: translateX(-320px) perspective(1000px) rotateY(45deg) scale(0.8);
-    transform: translateX(-320px) perspective(1000px) rotateY(45deg) scale(0.8);
+    -webkit-transform: translateX(-220px) perspective(0px) rotateY(45deg) scale(0.8);
+    transform: translateX(-220px) perspective(0px) rotateY(45deg) scale(0.8);
     opacity: 0.8;
     z-index: 3;
 }
@@ -559,8 +537,8 @@ html,body{
 }
 
 .slide-right {
-    -webkit-transform: translateX(320px) perspective(1000px) rotateY(-45deg) scale(0.8);
-    transform: translateX(320px) perspective(1000px) rotateY(-45deg) scale(0.8);
+    -webkit-transform: translateX(220px) perspective(0px) rotateY(-45deg) scale(0.8);
+    transform: translateX(220px) perspective(0px) rotateY(-45deg) scale(0.8);
     opacity: 0.8;
     z-index: 4;
 }
@@ -577,15 +555,16 @@ html,body{
     color: #666666;
     position: absolute;
     top: 50%;
-    margin-top: -27px;
-    z-index: 5;
+    margin-top: -35px;
+    z-index: 6;
     cursor: pointer;
+    color: #ffffff;
 }
 
 #btn-left {
-    left: 25px;
+    left: 0px;
 }
 
 #btn-right {
-    right: 25px;
+    right: 0px;
 }
