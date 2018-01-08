@@ -470,8 +470,8 @@ html,body{
 }
 .menu-content-3{
     background-color:#efefef;
-    /*animation: bottom-to-top 2s linear;*/
 }
+
 
 @keyframes bottom-to-top {
 
@@ -598,6 +598,13 @@ html,body{
 
 
 /* menu-3 : cards */
+.menu-content-3 .content-area{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 400px;
+}
+
 .cards-area{
     position: absolute;
     width: 930px;
@@ -706,6 +713,27 @@ html,body{
     font-weight: bold;
 }
 
+.cards-area .btn-1{
+    position: absolute;
+    bottom: -140px;
+    left: 36%;
+    border: 1px solid rgba(0,0,0,0.4);
+    color: rgba(0,0,0,0.6);
+    width: 130px;
+    height: 40px;
+    background-color: transparent;
+    animation: btn-appear 1s linear 1s forwards;
+    opacity: 0;
+    line-height: 38px;
+}
+.cards-area .btn-1:focus{
+    outline: none;
+}
+.cards-area .btn-1:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
 @keyframes card-appear {
     0%{
         left: 120%;
@@ -714,5 +742,16 @@ html,body{
     100%{
         left: 0%;
         transform: rotateZ(0deg);
+    }
+}
+
+@keyframes btn-appear{
+    0%{
+        bottom: -200px;
+        opacity: 0;
+    }
+    100%{
+        bottom: -140px;
+        opacity: 1;
     }
 }
