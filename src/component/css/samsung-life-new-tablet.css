@@ -356,6 +356,7 @@ html,body{
     height: 100%;
     background: #efefef;
     position: relative;
+    overflow: hidden;
 
 }
 
@@ -588,9 +589,130 @@ html,body{
 }
 
 #btn-left {
-    left: 0px;
+    left: -40px;
 }
 
 #btn-right {
+    right: -40px;
+}
+
+
+/* menu-3 : cards */
+.cards-area{
+    position: absolute;
+    width: 930px;
+    height: 300px;
+    top: 50%;
+    right: 5%;
+    transform: translateY(calc(-50% - 33px));
+}
+
+.cards-area .card{
+    display: inline-block;
+    width: 200px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+    padding: 20px 20px 52px 20px;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    left: 120%;
+    transform: rotateZ(15deg);
+
+}
+
+.cards-area .card:nth-child(1){
+    animation: card-appear 0.8s ease-in-out 1s forwards;
+}
+.cards-area .card:nth-child(2){
+    animation: card-appear 0.8s ease-in-out 1.1s forwards;
+}
+.cards-area .card:nth-child(3){
+    animation: card-appear 0.8s ease-in-out 1.2s forwards;
+}
+
+.cards-area .card:hover{
+    opacity: 0.5;
+}
+
+.card + .card{
+    margin-left: 20px;
+}
+
+.cards-area .plus-card{
+    background-color: rgba(0,0,0,0.05);
+    box-shadow: none;
+    color: rgba(0,0,0,0.4);
+}
+.cards-area .plus-card .contents-wrapper{
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cards-area .plus-card .ico-plus{
+    font-size: 72px;
+    font-weight: bold;
+    color: rgba(0,0,0,0.3);
+}
+
+.cards-area .card .title{
+    display: block;
+    width: 100%;
+    color: #434d5d;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.cards-area .card .item-list{
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+.cards-area .card .item-list .item{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.cards-area .card .price{
+    font-size: 24px;
+    color: #DD2266;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
     right: 0px;
+    text-align: right;
+    padding: 0px 20px;
+}
+.cards-area .card .price:before{
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.ico-plus{
+    color: #434d5d;
+    font-weight: bold;
+}
+
+@keyframes card-appear {
+    0%{
+        left: 120%;
+        transform: rotateZ(15deg);
+    }
+    100%{
+        left: 0%;
+        transform: rotateZ(0deg);
+    }
 }
