@@ -30,7 +30,7 @@ html,body{
     /*top: 0px;*/
     width: 1440px;
     height: 1545px;
-    background: url('../img/home_01.png') left top no-repeat;
+    background: url('../img/view.png') left top no-repeat;
     /*background-size: 1440px 1545px;*/
     display: block;
     margin: 0 auto;
@@ -41,17 +41,18 @@ html,body{
     left: 0px;
     top: 0px;
     width: 100%;
-    height: 88px;
+    height: 92px;
     background-color: #A7DBF3;
 }
 #home-contents .toggle-btn{
     position: absolute;
-    top: 762px;
+    top: 776px;
     right: 59px;
     display: inline-block;
     width: 64px;
     height: 44px;
-    background-color: rgba(0,0,0,0.4);
+    z-index: 999;
+    /*background-color: rgba(0,0,0,0.4);*/
 }
 #home-contents .toggle-btn:hover{
     cursor: pointer;
@@ -59,6 +60,85 @@ html,body{
 #home-contents .toggle-btn.star-toggle{
     background: url('../img/startoggle.png') left top no-repeat;
 }
+#home-contents .star{
+    position: absolute;
+    top: 860px;
+    left: 662px;
+    display: inline-block;
+    width: 32px;
+    height: 35px;
+    z-index: 1000;
+    /*background-color: rgba(0,0,0,0.4);*/
+}
+#home-contents .star:hover{
+    cursor: pointer;
+}
+#home-contents .star.star-toggle{
+    background: url('../img/star.png') left top no-repeat;
+}
+
+#home-contents .recommend-mask{
+    opacity: 0;
+    width: calc(1440px - 43px*2);
+    height: 665px;
+    position: absolute;
+    top: 837px;
+    left: 0px;
+    background-color:#EDF0F2;
+    transition: opacity 0.5s;
+    z-index: 1000;
+    padding: 0px 43px;
+    font-size:0px;
+    word-spacing: 0px;
+    letter-spacing: 0px;
+}
+#home-contents .recommend-mask.cover{
+    opacity: 1;
+}
+#home-contents .recommend-mask img{
+    display:none;
+    transform: translateX(50px);
+    opacity: 0;
+    /*display: inline-block;*/
+    margin-bottom: 10px;
+    /*animation: cust-card-appear 1s ease-out 0s forwards;*/
+}
+#home-contents .recommend-mask img.show{
+    display: inline-block;
+}
+#home-contents .recommend-mask img:nth-child(1){
+    animation: cust-card-appear 0.3s ease-out 0.2s both;
+}
+#home-contents .recommend-mask img:nth-child(2){
+    animation: cust-card-appear 0.3s ease-out 0.4s both;
+}
+#home-contents .recommend-mask img:nth-child(3){
+    animation: cust-card-appear 0.3s ease-out 0.6s both;
+}
+#home-contents .recommend-mask img:nth-child(4){
+    animation: cust-card-appear 0.3s ease-out 0.8s both;
+}
+#home-contents .recommend-mask img + img{
+    margin-left: 4px;
+}
+
+@keyframes  cust-card-appear{
+
+    0%{
+        transform: translateX(50px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+
+}
+
+
+
 
 #parallax-transition-wrap{
     width: 100%;
@@ -159,7 +239,7 @@ html,body{
     transform: rotateZ(-45deg) translate(-5px, 5px) scaleX(1.3);
 }
 #parallax-transition-wrap .gnb .hamburger-btn.x-mode .middle-bar{
-    transform: scaleX(0);
+    opacity: 0;
 }
 #parallax-transition-wrap .gnb .hamburger-btn.x-mode .bottom-bar{
     transform: rotateZ(45deg) translate(-9px, -8px) scaleX(1.3);
@@ -184,7 +264,7 @@ html,body{
     height: 2px;
     background-color: black;
     position: absolute;
-    transition: transform 0.5s ease-out;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 #parallax-transition-wrap .gnb .hamburger-btn .top-bar{
     top: 0%;
@@ -285,10 +365,18 @@ html,body{
 
 .menu-content-0{
     display: block;
-    background: url('../img/BannerBG.png') left top no-repeat;
+    background: url('../img/BG02.png') left top no-repeat;
     background-size: 100% 100%;
     top: 0%;
     position: relative;
+}
+.menu-content-0 .mask{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 88px;
+    background-color: #E7F2FC;
 }
 
 .menu-content-1{
@@ -331,7 +419,7 @@ html,body{
 .srch-area{
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 58%;
     transform:translate(-50%, -50%);
     font-size: 0px;
     letter-spacing: 0px;

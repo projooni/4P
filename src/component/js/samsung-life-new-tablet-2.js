@@ -10,6 +10,7 @@ var $activeMenuContent = '';
 var isMoving = false;
 var $menuArea = $('.menu-area');
 var $srchBtn = $('.srch-area .srch-btn');
+var $srchInput = $('.srch-area .srch-input-text');
 var userName = '';
 var $hamburgerBtn = $('.hamburger-btn');
 var $plusCard = $('.plus-card');
@@ -28,9 +29,28 @@ $(document).ready(function(){
     $(document).on('click', '#home-contents .toggle-btn', function(e){
 
         if($(this).hasClass('star-toggle')){
+            // 비활성화
+            $(this).css('background-color','transparent');
+            $('#home-contents .recommend-mask').removeClass('cover');
+            $('#home-contents .recommend-mask img').removeClass('show');
+            $('#home-contents .star').css('z-index','1000');
+        }else{
+            // 활성화
+            $(this).css('background-color','#EDF0F2');
+            $('#home-contents .recommend-mask').addClass('cover');
+            $('#home-contents .recommend-mask img').addClass('show');
+            $('#home-contents .star').css('z-index','999');
+        }
+        $(this).toggleClass('star-toggle');
+
+    });
+
+    $(document).on('click', '#home-contents .star', function(e){
+
+        if($(this).hasClass('star-toggle')){
             $(this).css('background-color','transparent');
         }else{
-            $(this).css('background-color','#ebebeb');
+            // $(this).css('background-color','#ebebeb');
         }
         $(this).toggleClass('star-toggle');
 
@@ -61,6 +81,15 @@ $(document).ready(function(){
 
     });
 
+    $srchInput.on('keypress', function(e){
+
+        var key = e.key;
+
+        if(key == 'Enter'){
+            $srchBtn.click();
+        }
+
+    });
     $srchBtn.on('click', function(e){
 
         // 배경전환
