@@ -46,8 +46,7 @@
 // });
 
 $(document).ready(function(){
-	
-	
+
 	// ResizeFrame(frameName, 'frameName');
 
 	// Masonry 초기화
@@ -62,7 +61,12 @@ $(document).ready(function(){
         columnWidth: '.grid-sizer',
         percentPosition: true
     });
-	
+
+    // TODO component 디렉토리 안의 모든 html 파일을 읽어서 Mansary Card로 감싼다.
+
+
+
+
 	// TODO iFrame 로딩 시점을 잡는다.
 	// var target = document.getElementById("targetFrameId");
 	// isLoadCompleted(target);
