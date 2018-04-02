@@ -17,7 +17,7 @@
 // 		return {items: items};
 // 	}
 // };
-
+// import Vue from 'vue';
 // $(document).ready(function() {
 // 	var $grid = $("#grid");
 // 	var ig = new eg.InfiniteGrid("#grid", {
@@ -44,6 +44,14 @@
 
 // 	ig.append(template(data.getItems(0)), 0);
 // });
+// console.log(Vue);
+// const Vue = require('vue');
+var app = new Vue({
+    el: '#vue-app',
+    data: {
+        message: '안녕하세요 Vue!'
+    }
+});
 
 $(document).ready(function(){
 

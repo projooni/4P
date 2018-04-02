@@ -6,6 +6,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var scss = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var babel = require('gulp-babel');
+var express_server = require('gulp-express');
 
 // gulp.task(name, deps, func)
 // name - task의 이름을 지정하고, 이름에는 공백이 포함되어서는 안됩니다.
@@ -147,4 +148,5 @@ gulp.task('server', function(){
 
 });
 
-gulp.task('default', ['copy-html', 'build-js', 'build-sass', 'copy-css', 'copy-img', 'server', 'watch']);
+// gulp.task('default', ['copy-html', 'build-js', 'build-sass', 'copy-css', 'copy-img', 'server', 'watch']);
+gulp.task('default', ['copy-html', 'build-js', 'build-sass', 'copy-css', 'copy-img']);
