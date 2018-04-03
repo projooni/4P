@@ -137,16 +137,17 @@ gulp.task('watch', function(){
 
 // 서버 task
 gulp.task('server', function(){
-    browserSync.init({
-        server: {
-            baseDir: path.dist.root
-        },
-        port: config.port,
-        index : "/index.html"
-
-    });
+    // browserSync.init({
+    //     server: {
+    //         baseDir: path.dist.root
+    //     },
+    //     port: config.port,
+    //     index : "/index.html"
+    //
+    // });
+    express_server.run(['./bin/www']);
 
 });
 
-// gulp.task('default', ['copy-html', 'build-js', 'build-sass', 'copy-css', 'copy-img', 'server', 'watch']);
-gulp.task('default', ['copy-html', 'build-js', 'build-sass', 'copy-css', 'copy-img']);
+gulp.task('default', ['copy-html', 'build-js', 'build-sass', 'copy-css', 'copy-img', 'server', 'watch']);
+// gulp.task('default', ['copy-html', 'build-js', 'build-sass', 'copy-css', 'copy-img']);
