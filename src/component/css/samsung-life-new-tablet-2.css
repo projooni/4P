@@ -419,7 +419,7 @@ html,body{
 .srch-area{
     position: absolute;
     left: 50%;
-    top: 58%;
+    top: 250px;
     transform:translate(-50%, -50%);
     font-size: 0px;
     letter-spacing: 0px;

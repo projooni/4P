@@ -1,0 +1,236 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    color: #434d5d;
+}
+
+#contents{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #A7DBF3;
+}
+
+
+#parallax-transition-wrap{
+    width: 100%;
+    height: 100%;
+    background: #efefef;
+    position: relative;
+    overflow: hidden;
+
+}
+
+#parallax-transition-wrap .menu-area{
+    position : absolute;
+    top: 100%;
+    left: 20%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    animation: bottom-to-top 0.8s ease-out 1s forwards;
+}
+#parallax-transition-wrap .menu-area button{
+    display: block;
+    text-decoration: none;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    border: 0;
+    background-color: transparent;
+    position: relative;
+    z-index: 1000;
+    margin-top: 30px;
+    color: #434d5d;
+}
+.active-border{
+    position: absolute;
+    display: none;
+    width: 200px;
+    height: 48px;
+    border: 1px solid #434d5d;
+    border-radius: 20px;
+    color: #434d5d;
+    z-index: 999;
+}
+#parallax-transition-wrap .menu-area button:focus{
+    outline: 0;
+}
+#parallax-transition-wrap .menu-area button span{
+    line-height: 46px;
+    /*font-weight: bold;*/
+    font-size: 20px;
+}
+#parallax-transition-wrap .menu-area button + button{
+    /*margin-top: 30px;*/
+}
+#parallax-transition-wrap .menu-area button.active{
+    /*border: 2px solid #DD2266;*/
+    /*border-radius: 10px;*/
+    /*color: #DD2266;*/
+    font-weight: bold;
+}
+#parallax-transition-wrap .menu-area button:hover{
+    /*color: #DD2266;*/
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#parallax-transition-wrap .menu-area .welcome-text{
+    font-size:36px;
+
+}
+
+#parallax-transition-wrap .menu-area .welcome-text .name{
+    font-weight: bold;
+    /*text-decoration: underline;*/
+    position: relative;
+}
+#parallax-transition-wrap .menu-area .welcome-text .name:after{
+    content: '';
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: -3px;
+    height: 2px;
+    background-color: #434d5d;
+}
+
+
+.menu-content-0, .menu-content-1, .menu-content-2, .menu-content-3{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 998;
+    top: 100%;
+}
+
+.menu-content-0{
+    display: block;
+    background: url('../img/BG02.png') left top no-repeat;
+    background-size: 100% 100%;
+    top: 0%;
+    position: relative;
+}
+.menu-content-0 .mask{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 88px;
+    background-color: #E7F2FC;
+}
+
+.menu-content-1{
+    background-color:#efeffe;
+    /*animation: bottom-to-top 2s linear;*/
+}
+.menu-content-2{
+    /*background-color:blue;*/
+    /*animation: bottom-to-top 2s linear;*/
+    background: url('../img/BG_sceond.png') left top no-repeat;
+    background-size: 100% 100%;
+}
+.menu-content-2 .consulting-card img{
+    position: absolute;
+    top: 25%;
+    right: 15%;
+}
+.menu-content-3{
+    background-color:#efefef;
+}
+
+
+@keyframes bottom-to-top {
+
+    0%{
+        top: 100%;
+
+    }
+    100%{
+
+        top: 50%;
+        opacity: 1;
+
+    }
+
+}
+
+.srch-area{
+    position: absolute;
+    left: 50%;
+    top: 250px;
+    transform:translate(-50%, -50%);
+    font-size: 0px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+}
+.srch-area .srch-input-text{
+    width: 500px;
+    height: 60px;
+    border: none;
+    padding: 5px;
+    font-size: 36px;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+.srch-area .srch-input-text:focus{
+    outline: 0;
+}
+.srch-area .srch-btn{
+    display: inline-block;
+    width: 120px;
+    height: 70px;
+    vertical-align: middle;
+    border: none;
+    background-color: #2184E2;
+    color: #F2F8FE;
+    font-size: 18px;
+}
+
+.srch-area .srch-btn:focus{
+    outline: 0;
+}
+.srch-area .srch-btn:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+@keyframes card-appear {
+    0%{
+        left: 120%;
+        /*transform: rotateZ(15deg);*/
+    }
+    100%{
+        left: 20%;
+        /*transform: rotateZ(0deg);*/
+    }
+}
+
+@keyframes move-left-end {
+    0%{
+        left: 20%;
+    }
+    100%{
+        left: 0%;
+    }
+
+}
+
+@keyframes btn-appear{
+    0%{
+        bottom: -200px;
+        opacity: 0;
+    }
+    100%{
+        bottom: -140px;
+        opacity: 1;
+    }
+}

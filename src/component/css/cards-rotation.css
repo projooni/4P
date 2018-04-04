@@ -1,0 +1,105 @@
+/* 이미지 3장 돌리기 인터랙션 */
+#rotate-image-area{
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 350px;
+    height: 500px;
+    transform: translate(-50%, -50%);
+}
+
+#wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #efefef;
+}
+
+#slides {
+    position: relative;
+    width: 350px;
+    height: 500px;
+    margin: 0 auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 350px;
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0;
+    -webkit-transition: opacity 0.8s, -webkit-transform 0.8s;
+    transition: opacity 0.8s, -webkit-transform 0.8s;
+    transition: transform 0.8s, opacity 0.8s;
+    transition: transform 0.8s, opacity 0.8s, -webkit-transform 0.8s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+    will-change: transform, opacity;
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+    background-clip: padding-box;
+    /*border: 1px solid rgba(0, 0, 0, 0.3);*/
+    -webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+}
+.slide img {
+    width: 350px;
+    height: 500px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.slide-left {
+    -webkit-transform: translateX(-220px) perspective(0px) rotateY(45deg) scale(0.8);
+    transform: translateX(-220px) perspective(0px) rotateY(45deg) scale(0.8);
+    opacity: 0.8;
+    z-index: 3;
+}
+
+.slide-center {
+    opacity: 1;
+    z-index: 5;
+}
+
+.slide-right {
+    -webkit-transform: translateX(220px) perspective(0px) rotateY(-45deg) scale(0.8);
+    transform: translateX(220px) perspective(0px) rotateY(-45deg) scale(0.8);
+    opacity: 0.8;
+    z-index: 4;
+}
+
+.sliding-right .slide-left {
+    z-index: 4;
+}
+.sliding-right .slide-right {
+    z-index: 3;
+}
+
+.btn {
+    font-size: 50px;
+    color: #666666;
+    position: absolute;
+    top: 50%;
+    margin-top: -35px;
+    z-index: 6;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+#btn-left {
+    left: -50px;
+}
+
+#btn-right {
+    right: -50px;
+}
