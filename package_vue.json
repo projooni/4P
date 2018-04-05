@@ -1,14 +1,12 @@
 {
-  "name": "code-container",
+  "name": "{{ name }}",
   "version": "1.0.0",
-  "description": "",
+  "description": "{{ description }}",
+  "author": "{{ author }}",
   "private": true,
-  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start_vue_dev": "npm run dev",
+    "start": "npm run dev",
     {{#if_eq runner "jest"}}
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     {{/if_eq}}
@@ -26,16 +24,10 @@
     {{/lint}}
     "build": "node build/build.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://git:git@github.com/projooni/ui-store.git"
+  "dependencies": {
+    "vue": "^2.5.2"{{#router}},
+    "vue-router": "^3.0.1"{{/router}}
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/projooni/ui-store/issues"
-  },
-  "homepage": "https://github.com/projooni/ui-store#readme",
   "devDependencies": {
     {{#lint}}
     "babel-eslint": "^7.2.3",
@@ -124,45 +116,15 @@
     "portfinder": "^1.0.13",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0",
-
-    "babel-core": "^6.26.0",
-    "babel-preset-react": "^6.24.1",
-    "browser-sync": "^2.18.13",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.1",
-    "gulp-uglify": "^3.0.0"
-  },
-  "dependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "body-parser": "~1.18.2",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "ejs": "^2.5.7",
-    "express": "~4.15.5",
-    "gulp-express": "^0.3.5",
-    "handlebars": "^4.0.11",
-    "jade": "~1.11.0",
-    "jquery": "^3.2.1",
-    "morgan": "~1.9.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "serve-favicon": "~2.4.5",
-//    "vue": "^2.5.16",
-    "vue": "^2.5.2"{{#router}},
-    "vue-router": "^3.0.1"{{/router}}
+    "webpack-merge": "^4.1.0"
   },
   "engines": {
-  "node": ">= 6.0.0",
-  "npm": ">= 3.0.0"
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
   },
   "browserslist": [
-  "> 1%",
-  "last 2 versions",
-  "not ie <= 8"
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
   ]
 }
