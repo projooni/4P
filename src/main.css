@@ -1,0 +1,11 @@
+html, body, #app, pre, input, textarea, button, select {
+  font-family: Arial;
+}
+
+body{
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
