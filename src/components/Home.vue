@@ -73,6 +73,7 @@
       // ...mapActions(['getContentsList']),
       initMasonryCards() {
 
+        console.log('initMasonryCards');
         // Masonry 초기화
         $('.grid').masonry({
           itemSelector: '.grid-item',
