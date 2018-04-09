@@ -1,43 +1,40 @@
 <template>
   <div class="home">
-    <!--<div class="upload-button-box">-->
-      <!--<button class="upload-button" @click="redirectUploadPage()">UPLOAD</button>-->
-    <!--</div>-->
-    <!--<div class="contents-list">-->
-      <!--<template v-for="contents in this.contentsList">-->
-        <!--<content-card :contents="contents"></content-card>-->
-      <!--</template>-->
-    <!--</div>-->
     <div class="grid">
-      <div class="grid-item"></div>
-      <div class="grid-item">
-        <iframe name="component-frame" src="/static/component/html/step.html" frameborder="0"></iframe>
+
+      <div class="grid-item" v-for="card in cards">
+        <iframe name="component-frame" v-bind:src="card.url" frameborder="0"></iframe>
       </div>
-      <div class="grid-item">
-        <iframe name="component-frame" src="/static/component/html/long-paragraph.html" frameborder="0"></iframe>
-      </div>
-      <div class="grid-item grid-item--height2"></div>
-      <div class="grid-item grid-item--width3"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item">
-        <iframe name="component-frame" src="/static/component/html/table-with-page-navigation.html" frameborder="0"></iframe>
-      </div>
-      <div class="grid-item grid-item--height2"></div>
-      <div class="grid-item grid-item--width2 grid-item--height3"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item grid-item--height2"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item grid-item--width2 grid-item--height2"></div>
-      <div class="grid-item grid-item--width2"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item grid-item--height2"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item grid-item--height3"></div>
-      <div class="grid-item grid-item--height2"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item"></div>
-      <div class="grid-item grid-item--height2"></div>
+
+      <!--<div class="grid-item"></div>-->
+      <!--<div class="grid-item">-->
+        <!--<iframe name="component-frame" src="/static/component/html/step.html" frameborder="0"></iframe>-->
+      <!--</div>-->
+      <!--<div class="grid-item">-->
+        <!--<iframe name="component-frame" src="/static/component/html/long-paragraph.html" frameborder="0"></iframe>-->
+      <!--</div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;height2"></div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;width3"></div>-->
+      <!--<div class="grid-item"></div>-->
+      <!--<div class="grid-item">-->
+        <!--<iframe name="component-frame" src="/static/component/html/table-with-page-navigation.html" frameborder="0"></iframe>-->
+      <!--</div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;height2"></div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;width2 grid-item&#45;&#45;height3"></div>-->
+      <!--<div class="grid-item"></div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;height2"></div>-->
+      <!--<div class="grid-item"></div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;width2 grid-item&#45;&#45;height2"></div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;width2"></div>-->
+      <!--<div class="grid-item"></div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;height2"></div>-->
+      <!--<div class="grid-item"></div>-->
+      <!--<div class="grid-item"></div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;height3"></div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;height2"></div>-->
+      <!--<div class="grid-item"></div>-->
+      <!--<div class="grid-item"></div>-->
+      <!--<div class="grid-item grid-item&#45;&#45;height2"></div>-->
     </div>
   </div>
 </template>
@@ -69,6 +66,19 @@
     //     router.push('/contents/upload')
     //   }
     // }
+    data(){
+      return{
+        cards:[
+          {url: '/static/component/html/step.html'},
+          {url: '/static/component/html/long-paragraph.html'},
+          {url: '/static/component/html/table-with-page-navigation.html'},
+          {url: '/static/component/html/cards-rotation.html'},
+          {url: '/static/component/html/page-transition.html'},
+          // {url: '/static/component/html/parallax-scroll.html'},
+          // {url: '/static/component/html/samsung-life-new-tablet.html'}
+        ]
+      }
+    },
     methods : {
       // ...mapActions(['getContentsList']),
       initMasonryCards() {

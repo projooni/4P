@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <navigation></navigation>
+    <navigation v-bind:title="title"></navigation>
     <router-view/>
   </div>
 </template>
@@ -10,7 +10,12 @@ import navigation from '@/components/Navigation';
 
 export default {
   name: 'App',
-  components: {navigation}
+  components: {navigation},
+  data () {
+    return{
+      title: 'Code-Container',
+    }
+  }
 }
 </script>
 

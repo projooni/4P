@@ -1,14 +1,14 @@
 <template>
     <header class="navigation">
-      <!--<span class="logo">OPUS</span>-->
-      <a class="home-title" href="/index.html">Code-Container</a>
+      <a class="home-title" href="/">{{title}}</a>
       <nav></nav>
     </header>
 </template>
 
 <script>
     export default {
-        name: "navigation"
+      name: "navigation",
+      props: ['title']
     }
 </script>
 
