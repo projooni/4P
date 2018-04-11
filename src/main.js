@@ -9,24 +9,34 @@ import axios from 'axios'
 import './main.css'
 
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 axios.interceptors.request.use(config => {
   config.url = apiConfig + config.url
   return config
-})
+});
 
 
 Vue.directive('focus', {
   inserted : function (el) {
   el.focus()
   }
-})
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  mounted: function(){
+    console.log('mounted');
+  },
+  updated: function(){
+    console.log('updated');
+  },
+  destroyed(){
+    console.log('destroyed');
+  }
 })

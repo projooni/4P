@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <navigation v-bind:title="title"></navigation>
+    <navigation v-bind:homeBtnTxt="homeBtnTxt"></navigation>
     <router-view/>
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
   components: {navigation},
   data () {
     return{
-      title: 'Code-Container',
+      homeBtnTxt: 'Code-Container',
     }
   }
 }

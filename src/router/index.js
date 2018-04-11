@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import UploadContents from '@/components/upload/UploadContents'
-import DetailContents from '@/components/detail/DetailContents'
-
-
 Vue.use(Router)
 
 export default new Router({

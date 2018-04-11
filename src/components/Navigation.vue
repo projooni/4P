@@ -1,14 +1,17 @@
 <template>
     <header class="navigation">
-      <a class="home-title" href="/">{{title}}</a>
-      <nav></nav>
+      <a class="home-title" href="/">{{homeBtnTxt}}</a>
+      <gnb-menu></gnb-menu>
     </header>
 </template>
 
 <script>
+  import GnbMenu from '@/components/GnbMenu';
+
     export default {
       name: "navigation",
-      props: ['title']
+      components: [GnbMenu],
+      props: ['homeBtnTxt']
     }
 </script>
 
