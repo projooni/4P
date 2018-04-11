@@ -7,12 +7,12 @@
 
 <script>
   import GnbMenu from '@/components/GnbMenu';
-
-    export default {
-      name: "navigation",
-      components: [GnbMenu],
-      props: ['homeBtnTxt']
-    }
+  console.log(GnbMenu);
+  export default {
+    name: "navigation",
+    components: {GnbMenu},
+    props: ['homeBtnTxt']
+  }
 </script>
 
 <style scoped>
@@ -30,6 +30,7 @@
     color: #fff;
     padding: 0px 10px;
     text-decoration: none;
+    vertical-align: middle;
   }
   .home-title:hover{
     background-color: #808080;
