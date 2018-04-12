@@ -15,7 +15,7 @@ HTML,CSS,JS로 제작된 UI 컴포넌트/인터랙션 등을 저장하고 관리
 
 구조
 -----
-###[Express]
+### [Express]
 * www
 [Express] 실행 명령을 통해 실행되는 최초 진입점, app 모듈에 연결.
 * app.js
@@ -23,7 +23,7 @@ url을 매핑하는 부분
 * views
 ...
 
-###[Vue.js]
+### [Vue.js]
 * bin
 ...
 * build
