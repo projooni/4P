@@ -9,3 +9,6 @@ code-container
 app 모듈에 연결
 * app.js
 url을 매핑하는 부분
+
+#Vue.js
+진입점 : main.js
