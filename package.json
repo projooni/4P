@@ -8,6 +8,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "prod": "node ./bin/www",
     "start": "node ./bin/www",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
@@ -101,6 +102,7 @@
     "jquery": "^3.3.1",
     "masonry-layout": "^4.2.1",
     "morgan": "~1.9.0",
+    "pg-promise": "^8.2.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "serve-favicon": "~2.4.5",
