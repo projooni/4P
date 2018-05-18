@@ -1,6 +1,7 @@
 <template>
-    <div class="grid-item">
+    <div class="grid-item" v-bind:class="{activePopup: isOpenDetailPopup}" @click="openDetailPopup">
       <iframe name="component-frame" :src="card.url" frameborder="0"></iframe>
+      <div class="detail-popup"></div>
     </div>
 </template>
 
@@ -12,13 +13,14 @@
     name: 'grid-item',
     props: ['card'],
     data(){
-      return{ }
+      return{
+        isOpenDetailPopup : false
+      }
     },
     methods : {
       // ...mapActions(['getContentsList']),
       initMasonryCards() {
 
-        console.log('initMasonryCards');
         // Masonry 초기화
         $('.grid').masonry({
           itemSelector: '.grid-item',
@@ -32,8 +34,6 @@
         var $targetFrame = $('[name=component-frame]');
         $targetFrame.on('load', function(e){
           console.log('iframe is loaded');
-
-          var name = $(this).attr('name');
 
           var $contents = $(this).contents();
           var outerWidth = $contents.outerWidth();
@@ -49,6 +49,10 @@
 
         });
 
+      },
+      openDetailPopup(){
+        console.log('openDetailPopup');
+        this.isOpenDetailPopup = !this.isOpenDetailPopup;
       }
     },
     mounted(){
@@ -87,5 +91,14 @@
     position: absolute;
     let: 0px;
     top: 0px;
+  }
+
+  .grid-item.activePopup .detail-popup{
+    position:absolute;
+    left:0px;
+    top: 0px;
+    width: 800px;
+    height: 600px;
+    background-color: red;
   }
 </style>

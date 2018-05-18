@@ -12,9 +12,8 @@
     data(){
       return{
         menus : [
-          {name: 'menu1'},
-          {name: 'menu2'},
-          {name: 'menu3'}
+          {name: 'About'},
+          {name: 'Contact'}
           ]
       }
     },
@@ -36,6 +35,7 @@
   .gnb-menu > ul{
     margin: 0px;
     padding: 0px;
+    margin-left: 20px;
   }
   .gnb-menu > ul > li{
     list-style: none;
