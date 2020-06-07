@@ -1,7 +1,7 @@
 <template>
   <div class="gnb-menu">
     <ul>
-      <li v-for="menu in menus">{{menu.name}}</li>
+      <li v-for="menu in menus"><router-link v-bind:to=menu.path>{{menu.name}}</router-link></li>
     </ul>
   </div>
 </template>
@@ -12,9 +12,31 @@
     data(){
       return{
         menus : [
-          {name: 'About'},
-          {name: 'Contact'}
-          ]
+          {
+            name: 'About',
+            path: ''
+          },
+          {
+            name: 'Portal',
+            path: ''
+          },
+          {
+            name: 'Publish',
+            path: '/publish'
+          },
+          {
+            name: 'Prototype',
+            path: ''
+          },
+          {
+            name: 'Portfolio',
+            path: ''
+          },
+          {
+            name: 'Contact',
+            path: ''
+          }
+        ]
       }
     },
     methods : {

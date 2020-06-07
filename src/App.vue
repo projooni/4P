@@ -13,7 +13,7 @@ export default {
   components: {navigation},
   data () {
     return{
-      homeBtnTxt: 'Code-Container',
+      homeBtnTxt: '4P',
     }
   }
 }
