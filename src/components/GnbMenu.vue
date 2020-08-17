@@ -14,7 +14,7 @@
         menus : [
           {
             name: 'About',
-            path: ''
+            path: '/about'
           },
           {
             name: 'Portal',
